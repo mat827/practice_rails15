@@ -1,0 +1,23 @@
+<%= flash[:success] %>
+<h2>User info</h2>
+<%= form_for (@user) do |f| %>
+<% if @user.errors.any? %>
+	<div class = "alert alert-warning">
+		<h2><%= @user.errors.count %>error</h2>
+		<ul>
+			<% @user.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :introduction %>
+	<%= f.text_field :introduction %>
+
+	<%= f.label :profile_image %>
+	<%= f.attachment_field :profile_image %>
+	<%= f.submit "Update User" %>
+<% end %>
